@@ -4,11 +4,16 @@ import productRouter from './src/features/products/product.routes.js';
 import userRouter from './src/features/users/user.routes.js';
 import jwtAuth from './src/middlewares/jwt.middleware.js';
 import cartRouter from './src/features/cartItems/cartItem.routes.js';
+import swagger from 'swagger-ui-express';
+import apiDocs from './swagger.json' assert {type: 'json'};
 
 
 const server = express();
 
 server.use(express.json());
+server.use("/api-docs", 
+swagger.serve, 
+swagger.setup(apiDocs))
 
 server.use(
   '/api/products',
