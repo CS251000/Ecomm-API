@@ -1,5 +1,7 @@
-
+import dotenv from "dotenv";
+dotenv.config();
 import express from 'express';
+
 import productRouter from './src/features/products/product.routes.js';
 import userRouter from './src/features/users/user.routes.js';
 import jwtAuth from './src/middlewares/jwt.middleware.js';
@@ -10,7 +12,9 @@ import cors from "cors";
 import {connectToMongoDB} from './src/config/mongodb.js';
 
 
+
 const server = express();
+
 server.use(cors());
 // server.use((req,res,next)=>{
 //   res.header('Access-Control-Allow-Origin','http://localhost:5500');

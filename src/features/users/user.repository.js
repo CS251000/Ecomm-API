@@ -29,8 +29,6 @@ export default class UserRepository{
             throw(err);
         }
     }
-
-
     async findByEmail(email){
         try{
             const db= getDb();
