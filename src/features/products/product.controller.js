@@ -1,30 +1,21 @@
 import ProductModel from "./product.model.js";
-
 export default class ProductController{
-
     getAllProducts(req,res){
         const products = ProductModel.GetAll();
         res.status(200).send(products);
     }
-
     addProduct(req, res) {
         const { name, price, sizes } = req.body;
-    
-        // Check if req.file is defined before accessing its properties
         const imageUrl = req.file ? req.file.filename : null;
-    
         const newProduct = {
             name,
             price: parseFloat(price),
             sizes: sizes.split(','),
             imageUrl,
         };
-    
         const createdRecord = ProductModel.add(newProduct);
         res.status(201).send(createdRecord);
     }
-    
-
     rateProduct(req,res){
         const userID= req.query.userID;
         const productID= req.query.productID;
@@ -35,9 +26,7 @@ export default class ProductController{
         }else{
             return res.status(200).send('rated successfully');
         }
-
     }
-
     getOneProduct(req,res){
         const id= req.params.id;
         const product=ProductModel.get(id);
