@@ -6,6 +6,7 @@ import productRouter from './src/features/products/product.routes.js';
 import userRouter from './src/features/users/user.routes.js';
 import jwtAuth from './src/middlewares/jwt.middleware.js';
 import cartRouter from './src/features/cartItems/cartItem.routes.js';
+import orderRouter from "./src/features/order/order.routes.js";
 import swagger from 'swagger-ui-express';
 import apiDocs from './swagger.json' assert {type: 'json'};
 import cors from "cors";
@@ -38,6 +39,7 @@ server.use(
 );
 server.use('/api/users', userRouter);
 server.use('/api/cartItems',jwtAuth,cartRouter);
+server.use('/api/orders',jwtAuth,orderRouter);
 
 // 3. Default request handler
 server.get('/', (req, res) => {
